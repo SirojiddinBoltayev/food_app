@@ -19,7 +19,11 @@ dependencies:
   animated_splash_screen: ^1.3.0
   flutter_snake_navigationbar: ^0.6.1
   quickalert: ^1.0.0
-
+  shadow: ^1.5.0
+  hidable: ^1.0.3
+  theme_manager: ^1.1.1
+  image_picker: ^0.8.6
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +39,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/coffee/
     - assets/images/json_anime/
     - assets/icons/
 

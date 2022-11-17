@@ -1,849 +1,242 @@
+import 'package:burger_app/pages/widgets/add_package.dart';
 import 'package:flutter/material.dart';
 
 import 'item_widget.dart';
 
-Widget meatyWidget(queryData,context) {
+Widget meatyWidget( queryData,scrollController,  context) {
+  double textSize = 0;
+  int item = 3;
+  double itemPadding = 3;
+  if (queryData <= 600) {
+    itemPadding = 3;
+    item = 3;
+    textSize = 3;
+  } else if (queryData <= 800) {
+    itemPadding = 5;
+    item = 4;
+    textSize = 4;
+  } else if (queryData <= 1100) {
+    itemPadding = 5;
+    item = 5;
+    textSize = 5;
+  } else if (queryData > 1100) {
+    textSize = 6;
+    itemPadding = 6;
+    item = 6;
+  }
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 8.0),
     child: CustomScrollView(
-      physics: const BouncingScrollPhysics(),
+      scrollBehavior: CustomScroll(),
+      controller: scrollController,
+      physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
         SliverList(
           delegate: SliverChildListDelegate([
-            const SizedBox(height: 35,),
-            const Text(
+            const SizedBox(
+              height: 35,
+            ),
+            Text(
               "Siz bizni tanlaganingizdan juda xursandmiz. ",
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(fontSize: 11 + textSize),
             ),
-            const SizedBox(height: 5,),
-
-            const Text(
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
               "Bizning restoranga tashrif buyurganingiz uchun rahmat!",
-              style: TextStyle(fontSize: 14,color: Colors.indigo),
+              style: TextStyle(fontSize: 11 + textSize, color: Colors.indigo),
             ),
-            const SizedBox(height: 15,),
-
+            const SizedBox(
+              height: 15,
+            ),
+            const Text(
+              "Taomlar",
+              style: TextStyle(fontSize: 18, color: Colors.teal),
+            ),
           ]),
         ),
         SliverGrid.count(
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 10,
-            childAspectRatio: 0.5,
-            crossAxisCount: 3,
-            children: [
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffF2DFE1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffDCC7B1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffFFC5A8),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xff71C3A1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffA8B6FF),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffFFE7A8),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffCEA8FF),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffA8FFB1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xff71C3A1),queryData,context), itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffF2DFE1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffDCC7B1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffFFC5A8),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xff71C3A1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffA8B6FF),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffFFE7A8),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffCEA8FF),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xffA8FFB1),queryData,context),
-              itemWidget("Shashlik", "Qo'y go'shtidan shashlik", "80 000 sum", "5 min",
-                  "assets/images/shashlik_sheep.png", Color(0xff71C3A1),queryData,context),
 
+            crossAxisSpacing: 2 + itemPadding,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.46,
+            crossAxisCount: item,
+
+            children: [
+              itemWidget(
+                food: "Shashlik",
+                foodInfo: "Qo'y go'shtidan shashlik",
+                price: "80 000 sum",
+                duration: "5 min",
+                foodImage: "assets/images/shashlik_sheep.png",
+                colors: const Color(0xffF2DFE1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffDCC7B1),
+                queryData: queryData,
+
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffFFC5A8),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xff71C3A1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffA8B6FF),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffFFE7A8),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffCEA8FF),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffA8FFB1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xff71C3A1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffF2DFE1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffDCC7B1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffFFC5A8),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xff71C3A1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffA8B6FF),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors:  const Color(0xffFFE7A8),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors:  const Color(0xffCEA8FF),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xffA8FFB1),
+                queryData: queryData,
+              ),
+              itemWidget(
+                  food: "Shashlik",
+                  foodInfo: "Qo'y go'shtidan shashlik",
+                  price: "80 000 sum",
+                  duration: "5 min",
+                  foodImage: "assets/images/shashlik_sheep.png",
+                  colors: const Color(0xff71C3A1),
+                 queryData: queryData,
+
+              ),
             ]),
       ],
     ),
-
-    // GridView.count(
-    //   childAspectRatio: 0.56,
-    //   crossAxisSpacing: 10,
-    //   mainAxisSpacing: 20,
-    //   padding: EdgeInsets.only(top:40,left: 10,right: 10),
-    //   crossAxisCount: 3,
-    //   children: [
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //     Stack(
-    //
-    //       children: [
-    //
-    // Container(
-    //   padding: const EdgeInsets.only(top: 25.0),
-    //   child: Card(
-    //     shape: RoundedRectangleBorder( //<-- SEE HERE
-    //       borderRadius: BorderRadius.circular(20),
-    //       side: BorderSide(
-    //         color: Colors.greenAccent,
-    //       ),
-    //     ),
-    //     shadowColor: Colors.limeAccent,
-    //     elevation: 25,
-    //     color: Color(0xffF2DFE1),
-    //
-    //             child:  Padding(
-    //               padding: const EdgeInsets.all(10.0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: [
-    //                     SizedBox(height: 25,),
-    //                     Row(children: [
-    //                       Container(height: 12,width: 2,color: Colors.indigo,),
-    //                       SizedBox(width: 3,),
-    //
-    //                       Text("Shashlik",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 15,),
-    //
-    //                    Text("Shashlik qo'y go'shtidan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-    //
-    //                     SizedBox(height: 30,),
-    //
-    //                     Row(children: [
-    //
-    //                       Text("Narxi:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                       Spacer(),
-    //                       Text("80 000 sum",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w600,fontSize: 10),),
-    //                     ],),
-    //                     SizedBox(height: 10,),
-    //
-    //                     Row(
-    //                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                       children: [
-    //                       Image.asset("assets/icons/ic_pot.png",color: Colors.black,scale: 4.5,),
-    //                       SizedBox(width: 5,),
-    //
-    //                       Text("20 min",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                       Spacer(),
-    //                         Image.asset("assets/icons/ic_duty.png",color: Colors.black,scale: 4.5,),
-    //                         SizedBox(width: 5,),
-    //                         Text("5 ing",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w300,fontSize: 10),),
-    //                     ],),
-    //                     Row(children: [
-    //
-    //                     ],),
-    //
-    //
-    //                   ],
-    //                 ),
-    //             ),
-    //             ),
-    // ),
-    //         Row(
-    //           children: [
-    //             Spacer(),
-    //
-    //             Image.asset("assets/images/shashlik_sheep.png",scale: 2.5,),
-    //           ],
-    //         ),
-    //
-    //       ],
-    //
-    //     ),
-    //
-    //
-    //       ],
-    //
-    //     ),
   );
-
 }
-
+class CustomScroll extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+}

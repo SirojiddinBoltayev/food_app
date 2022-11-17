@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'item_widget.dart';
 
-Widget coffeeWidget(queryData,  scrollController, context) {
+Widget salatWidget(queryData,  scrollController, context) {
   double textSize = 0;
   int item = 3;
   double itemPadding = 3;
@@ -27,10 +27,9 @@ Widget coffeeWidget(queryData,  scrollController, context) {
     child: CustomScrollView(
       scrollBehavior: CustomScroll(),
       controller: scrollController,
-
+      physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
         SliverList(
-
           delegate: SliverChildListDelegate([
             const SizedBox(
               height: 35,
@@ -50,7 +49,7 @@ Widget coffeeWidget(queryData,  scrollController, context) {
               height: 15,
             ),
             const Text(
-              "Ichimliklar",
+              "Salatlar",
               style: TextStyle(fontSize: 18, color: Colors.teal),
             ),
           ]),
@@ -220,7 +219,6 @@ Widget coffeeWidget(queryData,  scrollController, context) {
       ],
     ),
   );
-
 }
 class CustomScroll extends ScrollBehavior {
   @override
