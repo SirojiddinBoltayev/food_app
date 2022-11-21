@@ -10,7 +10,7 @@ Widget pageView(List<XFile>? _imageFileList) {
       return _imageFileList != null ?  Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image:FileImage(File(_imageFileList![index].path),
+            image:FileImage(File(_imageFileList[index].path),
             ),
           )
         ),

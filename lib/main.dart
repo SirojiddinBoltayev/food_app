@@ -1,17 +1,25 @@
 import 'package:burger_app/pages/splash_page.dart';
+import 'package:burger_app/pages/widgets/menu_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:theme_manager/theme_manager.dart';
 
-import 'pages/home_page.dart';
-
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+      supportedLocales: const [
+        Locale('uz', 'UZ'),
+        Locale('en', 'US'),
+      ],
+      path: 'assets/translations',
+      fallbackLocale: L10n.all[0],
+      child: const MyApp()));
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    systemStatusBarContrastEnforced: true// transparent status bar
-  ));
+      statusBarColor: Colors.transparent,
+      systemStatusBarContrastEnforced: true // transparent status bar
+      ));
 }
 
 class MyApp extends StatefulWidget {
@@ -29,17 +37,18 @@ class _MyAppState extends State<MyApp> {
     return ThemeManager(
       defaultBrightnessPreference: BrightnessPreference.system,
       data: (Brightness brightness) => ThemeData(
-        primarySwatch: Colors.blue,
-        accentColor: Colors.lightBlue,
         brightness: brightness,
       ),
       loadBrightnessOnStart: true,
       themedWidgetBuilder: (BuildContext context, ThemeData theme) {
         return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           debugShowCheckedModeBanner: false,
           title: 'Theme Manager Demo',
           theme: theme,
-          home: MyHomePage(),
+          home: splashScreen(),
         );
       },
     );

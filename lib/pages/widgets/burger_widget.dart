@@ -25,198 +25,203 @@ Widget burgerWidget(queryData,  scrollController, context) {
   }
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 8.0),
-    child: CustomScrollView(
-      scrollBehavior: CustomScroll(),
-      controller: scrollController,
-      physics: const AlwaysScrollableScrollPhysics(),
-      slivers: [
-        SliverList(
-          delegate: SliverChildListDelegate([
-            const SizedBox(
-              height: 35,
+    child: Column(
+      children: [
+        CustomScrollView(
+          scrollBehavior: CustomScroll(),
+          controller: scrollController,
+          physics: const AlwaysScrollableScrollPhysics(),
+          slivers: [
+            SliverList(
+
+              delegate: SliverChildListDelegate([
+                const SizedBox(
+                  height: 35,
+                ),
+                Text(
+                  "Siz bizni tanlaganingizdan juda xursandmiz. ",
+                  style: TextStyle(fontSize: 11 + textSize),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Bizning restoranga tashrif buyurganingiz uchun rahmat!",
+                  style: TextStyle(fontSize: 11 + textSize, color: Colors.indigo),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  "Fast food ",
+                  style: TextStyle(fontSize: 18, color: Colors.teal),
+                ),
+              ]),
             ),
-            Text(
-              "Siz bizni tanlaganingizdan juda xursandmiz. ",
-              style: TextStyle(fontSize: 11 + textSize),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(
-              "Bizning restoranga tashrif buyurganingiz uchun rahmat!",
-              style: TextStyle(fontSize: 11 + textSize, color: Colors.indigo),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const Text(
-              "Fast food ",
-              style: TextStyle(fontSize: 18, color: Colors.teal),
-            ),
-          ]),
+            SliverGrid.count(
+
+                crossAxisSpacing: 2 + itemPadding,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.46,
+                crossAxisCount: item,
+                children: [
+                  itemWidget(
+                    food: "Espresso",
+                    foodInfo: "Espresso o'rtacha sutli coffee",
+                    price: "10 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_espresso.png",
+                    colors: const Color(0xffF2DFE1),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Latte",
+                    foodInfo: "Latte sutli shirin coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_latte.png",
+                    colors: const Color(0xffDCC7B1),
+                    queryData: queryData,
+
+                  ),
+                  itemWidget(
+                    food: "Macchiato",
+                    foodInfo: "Macchiato coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_macchiato.png",
+
+                    colors: const Color(0xffFFC5A8),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Ristreto",
+                    foodInfo: "Ristreto coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_ristretto.png",
+
+                    colors: const Color(0xff71C3A1),
+                    queryData: queryData,
+                  ), itemWidget(
+                    food: "Espresso",
+                    foodInfo: "Espresso o'rtacha sutli coffee",
+                    price: "10 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_espresso.png",
+                    colors: const Color(0xffF2DFE1),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Latte",
+                    foodInfo: "Latte sutli shirin coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_latte.png",
+                    colors: const Color(0xffDCC7B1),
+                    queryData: queryData,
+
+                  ),
+                  itemWidget(
+                    food: "Macchiato",
+                    foodInfo: "Macchiato coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_macchiato.png",
+
+                    colors: const Color(0xffFFC5A8),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Ristreto",
+                    foodInfo: "Ristreto coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_ristretto.png",
+
+                    colors: const Color(0xff71C3A1),
+                    queryData: queryData,
+                  ), itemWidget(
+                    food: "Espresso",
+                    foodInfo: "Espresso o'rtacha sutli coffee",
+                    price: "10 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_espresso.png",
+                    colors: const Color(0xffF2DFE1),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Latte",
+                    foodInfo: "Latte sutli shirin coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_latte.png",
+                    colors: const Color(0xffDCC7B1),
+                    queryData: queryData,
+
+                  ),
+                  itemWidget(
+                    food: "Macchiato",
+                    foodInfo: "Macchiato coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_macchiato.png",
+
+                    colors: const Color(0xffFFC5A8),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Ristreto",
+                    foodInfo: "Ristreto coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_ristretto.png",
+
+                    colors: const Color(0xff71C3A1),
+                    queryData: queryData,
+                  ), itemWidget(
+                    food: "Espresso",
+                    foodInfo: "Espresso o'rtacha sutli coffee",
+                    price: "10 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_espresso.png",
+                    colors: const Color(0xffF2DFE1),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Latte",
+                    foodInfo: "Latte sutli shirin coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_latte.png",
+                    colors: const Color(0xffDCC7B1),
+                    queryData: queryData,
+
+                  ),
+                  itemWidget(
+                    food: "Macchiato",
+                    foodInfo: "Macchiato coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_macchiato.png",
+
+                    colors: const Color(0xffFFC5A8),
+                    queryData: queryData,
+                  ),
+                  itemWidget(
+                    food: "Ristreto",
+                    foodInfo: "Ristreto coffee",
+                    price: "80 000 sum",
+                    duration: "5 min",
+                    foodImage: "assets/images/coffee/ic_ristretto.png",
+
+                    colors: const Color(0xff71C3A1),
+                    queryData: queryData,
+                  ),
+
+                ]),
+          ],
         ),
-        SliverGrid.count(
-
-            crossAxisSpacing: 2 + itemPadding,
-            mainAxisSpacing: 10,
-            childAspectRatio: 0.46,
-            crossAxisCount: item,
-            children: [
-              itemWidget(
-                food: "Espresso",
-                foodInfo: "Espresso o'rtacha sutli coffee",
-                price: "10 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_espresso.png",
-                colors: const Color(0xffF2DFE1),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Latte",
-                foodInfo: "Latte sutli shirin coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_latte.png",
-                colors: const Color(0xffDCC7B1),
-                queryData: queryData,
-
-              ),
-              itemWidget(
-                food: "Macchiato",
-                foodInfo: "Macchiato coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_macchiato.png",
-
-                colors: const Color(0xffFFC5A8),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Ristreto",
-                foodInfo: "Ristreto coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_ristretto.png",
-
-                colors: const Color(0xff71C3A1),
-                queryData: queryData,
-              ), itemWidget(
-                food: "Espresso",
-                foodInfo: "Espresso o'rtacha sutli coffee",
-                price: "10 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_espresso.png",
-                colors: const Color(0xffF2DFE1),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Latte",
-                foodInfo: "Latte sutli shirin coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_latte.png",
-                colors: const Color(0xffDCC7B1),
-                queryData: queryData,
-
-              ),
-              itemWidget(
-                food: "Macchiato",
-                foodInfo: "Macchiato coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_macchiato.png",
-
-                colors: const Color(0xffFFC5A8),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Ristreto",
-                foodInfo: "Ristreto coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_ristretto.png",
-
-                colors: const Color(0xff71C3A1),
-                queryData: queryData,
-              ), itemWidget(
-                food: "Espresso",
-                foodInfo: "Espresso o'rtacha sutli coffee",
-                price: "10 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_espresso.png",
-                colors: const Color(0xffF2DFE1),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Latte",
-                foodInfo: "Latte sutli shirin coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_latte.png",
-                colors: const Color(0xffDCC7B1),
-                queryData: queryData,
-
-              ),
-              itemWidget(
-                food: "Macchiato",
-                foodInfo: "Macchiato coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_macchiato.png",
-
-                colors: const Color(0xffFFC5A8),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Ristreto",
-                foodInfo: "Ristreto coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_ristretto.png",
-
-                colors: const Color(0xff71C3A1),
-                queryData: queryData,
-              ), itemWidget(
-                food: "Espresso",
-                foodInfo: "Espresso o'rtacha sutli coffee",
-                price: "10 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_espresso.png",
-                colors: const Color(0xffF2DFE1),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Latte",
-                foodInfo: "Latte sutli shirin coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_latte.png",
-                colors: const Color(0xffDCC7B1),
-                queryData: queryData,
-
-              ),
-              itemWidget(
-                food: "Macchiato",
-                foodInfo: "Macchiato coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_macchiato.png",
-
-                colors: const Color(0xffFFC5A8),
-                queryData: queryData,
-              ),
-              itemWidget(
-                food: "Ristreto",
-                foodInfo: "Ristreto coffee",
-                price: "80 000 sum",
-                duration: "5 min",
-                foodImage: "assets/images/coffee/ic_ristretto.png",
-
-                colors: const Color(0xff71C3A1),
-                queryData: queryData,
-              ),
-
-            ]),
       ],
     ),
   );
