@@ -2,4 +2,4 @@
 
 "Dastur fast food tayyorlovchi markazlar uchun tayyorlab chiqildi"
 
-![](assets/untitled.gif)
+![](https://github.com/SirojiddinBoltayev/food_app/blob/master/assets/untitled.gif)
